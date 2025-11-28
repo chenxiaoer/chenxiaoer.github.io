@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的GitHub Pages网站</title>
+    <style>
+        :root {
+            --primary-color: #0366d6;
+            --bg-color: #ffffff;
+            --text-color: #24292e;
+            --card-bg: #f6f8fa;
+            --border-color: #e1e4e8;
+            --shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        }
+
+        .dark-mode {
+            --primary-color: #58a6ff;
+            --bg-color: #0d1117;
+            --text-color: #c9d1d9;
+            --card-bg: #161b22;
+            --border-color: #30363d;
+            --shadow: 0 1px 3px rgba(0,0,0,0.5), 0 1px 2px rgba(0,0,0,0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--bg-color);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .hero {
+            padding: 5rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .dark-mode .hero {
+            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .features {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .card p {
+            margin-bottom: 1.5rem;
+        }
+
+        footer {
+            background-color: var(--card-bg);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links li {
+            margin: 0 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">MySite</a>
+                <ul class="nav-links">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#about">关于</a></li>
+                    <li><a href="#projects">项目</a></li>
+                    <li><a href="#contact">联系</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>欢迎来到我的GitHub Pages网站</h1>
+            <p>这是一个使用GitHub Pages托管的静态网站示例。GitHub Pages允许您直接从GitHub仓库免费托管网站。</p>
+            <a href="#features" class="btn">了解更多</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">GitHub Pages 特性</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>免费托管</h3>
+                    <p>GitHub Pages为公共仓库提供免费托管服务，是展示项目或个人作品集的理想选择。</p>
+                    <a href="#" class="btn">查看详情</a>
+                </div>
+                <div class="card">
+                    <h3>简单部署</h3>
+                    <p>只需将静态文件推送到您的GitHub仓库，GitHub Pages就会自动构建和部署您的网站。</p>
+                    <a href="#" class="btn">查看详情</a>
+                </div>
+                <div class="card">
+                    <h3>自定义域名</h3>
+                    <p>您可以将自己的域名指向GitHub Pages，创建专业的个人或项目网站。</p>
+                    <a href="#" class="btn">查看详情</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="#">隐私政策</a></li>
+                <li><a href="#">使用条款</a></li>
+                <li><a href="#">GitHub</a></li>
+                <li><a href="#">联系我</a></li>
+            </ul>
+            <p>&copy; 2023 我的GitHub Pages网站. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 主题切换功能
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // 检查本地存储的主题偏好
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.textContent = '☀️';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggle.textContent = '🌙';
+            }
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
