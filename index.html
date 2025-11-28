@@ -3,30 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InnovateTech - Team & Projects</title>
+    <title>Real Estate Management & Rental</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
+            --primary: #1a3a5f;
+            --secondary: #2c5aa0;
             --accent: #e74c3c;
-            --light: #ecf0f1;
+            --light: #f8f9fa;
             --dark: #2c3e50;
             --text: #333;
-            --text-light: #7f8c8d;
+            --text-light: #6c757d;
         }
         
         body {
-            background-color: #f9f9f9;
+            background-color: #ffffff;
             color: var(--text);
+            font-family: 'Open Sans', sans-serif;
             line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
         }
         
         .container {
@@ -38,31 +44,77 @@
         
         /* Header Styles */
         header {
-            background-color: var(--primary);
-            color: white;
-            padding: 20px 0;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 15px 0;
         }
         
         .logo {
-            font-size: 24px;
-            font-weight: 700;
             display: flex;
             align-items: center;
         }
         
-        .logo i {
-            margin-right: 10px;
-            color: var(--secondary);
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 10px;
+            width: 40px;
+            height: 15px;
+            border-top: 3px solid white;
+            border-left: 3px solid white;
+            border-right: 3px solid white;
+            border-radius: 2px 2px 0 0;
+        }
+        
+        .logo-icon .logo-r {
+            font-size: 24px;
+            font-weight: 800;
+            margin-top: 15px;
+            z-index: 1;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text .company-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+        }
+        
+        .logo-text .tagline {
+            font-size: 12px;
+            color: var(--text-light);
+            letter-spacing: 1px;
         }
         
         nav ul {
@@ -75,19 +127,35 @@
         }
         
         nav ul li a {
-            color: white;
+            color: var(--dark);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s;
         }
         
         nav ul li a:hover {
             color: var(--secondary);
         }
         
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: linear-gradient(rgba(26, 58, 95, 0.8), rgba(26, 58, 95, 0.9)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
             color: white;
             padding: 100px 0;
             text-align: center;
@@ -101,7 +169,48 @@
         .hero p {
             font-size: 1.2rem;
             max-width: 700px;
-            margin: 0 auto 30px;
+            margin: 0 auto 40px;
+        }
+        
+        .search-box {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--secondary);
+            outline: none;
         }
         
         .btn {
@@ -109,16 +218,18 @@
             background-color: var(--accent);
             color: white;
             padding: 12px 30px;
+            border: none;
             border-radius: 5px;
             text-decoration: none;
             font-weight: 600;
+            cursor: pointer;
             transition: all 0.3s;
+            align-self: flex-end;
         }
         
         .btn:hover {
             background-color: #c0392b;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
         }
         
         /* Section Styles */
@@ -156,7 +267,157 @@
             margin: 0 auto;
         }
         
+        /* Services Section */
+        .services {
+            background-color: var(--light);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            height: 200px;
+            background-color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .service-content p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        
+        .service-link {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .service-link i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .service-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Properties Section */
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .property-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .property-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .property-img {
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .property-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .property-card:hover .property-img img {
+            transform: scale(1.05);
+        }
+        
+        .property-info {
+            padding: 20px;
+        }
+        
+        .property-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .property-address {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .property-address i {
+            margin-right: 8px;
+            color: var(--secondary);
+        }
+        
+        .property-features {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .feature {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .feature i {
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+        
+        .feature span {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
         /* About Section */
+        .about {
+            background-color: var(--light);
+        }
+        
         .about-content {
             display: flex;
             align-items: center;
@@ -167,9 +428,42 @@
             flex: 1;
         }
         
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+        
+        .about-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
         .about-image {
             flex: 1;
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
@@ -180,143 +474,68 @@
             display: block;
         }
         
-        /* Team Section */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        
-        .team-member {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-        }
-        
-        .team-member:hover {
-            transform: translateY(-10px);
-        }
-        
-        .member-img {
-            height: 250px;
-            overflow: hidden;
-        }
-        
-        .member-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .team-member:hover .member-img img {
-            transform: scale(1.1);
-        }
-        
-        .member-info {
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .member-info h3 {
-            margin-bottom: 5px;
-            color: var(--primary);
-        }
-        
-        .member-info .position {
-            color: var(--secondary);
-            font-weight: 500;
-            margin-bottom: 10px;
-        }
-        
-        .member-info p {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            margin-top: 15px;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            background-color: var(--light);
-            color: var(--primary);
-            margin: 0 5px;
-            transition: all 0.3s;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--secondary);
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--primary);
             color: white;
         }
         
-        /* Projects Section */
-        .projects-grid {
+        .testimonials .section-title h2 {
+            color: white;
+        }
+        
+        .testimonials .section-title p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
         }
         
-        .project-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 30px;
+            transition: transform 0.3s;
         }
         
-        .project-img {
-            height: 200px;
-            overflow: hidden;
+        .testimonial-card:hover {
+            transform: translateY(-5px);
         }
         
-        .project-img img {
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s;
         }
         
-        .project-card:hover .project-img img {
-            transform: scale(1.1);
+        .author-info h4 {
+            margin-bottom: 5px;
         }
         
-        .project-info {
-            padding: 20px;
-        }
-        
-        .project-info h3 {
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-        
-        .project-info p {
-            color: var(--text-light);
-            margin-bottom: 15px;
-        }
-        
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        
-        .project-tags span {
-            background-color: var(--light);
-            color: var(--primary);
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
+        .author-info p {
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
         
         /* Contact Section */
@@ -364,21 +583,8 @@
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            font-weight: 500;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: border 0.3s;
-        }
-        
-        .form-control:focus {
-            border-color: var(--secondary);
-            outline: none;
+            font-weight: 600;
+            color: var(--primary);
         }
         
         textarea.form-control {
@@ -388,15 +594,15 @@
         
         /* Footer */
         footer {
-            background-color: var(--primary);
+            background-color: var(--dark);
             color: white;
-            padding: 50px 0 20px;
+            padding: 70px 0 20px;
         }
         
         .footer-content {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
         
         .footer-column {
@@ -409,7 +615,7 @@
         }
         
         .footer-column h3 {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-size: 1.2rem;
             position: relative;
             padding-bottom: 10px;
@@ -426,8 +632,8 @@
         }
         
         .footer-column p {
-            margin-bottom: 15px;
-            color: #bdc3c7;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.7);
         }
         
         .footer-links {
@@ -435,11 +641,11 @@
         }
         
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         
         .footer-links a {
-            color: #bdc3c7;
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             transition: color 0.3s;
         }
@@ -448,11 +654,34 @@
             color: var(--secondary);
         }
         
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
         .copyright {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #bdc3c7;
+            color: rgba(255, 255, 255, 0.5);
             font-size: 0.9rem;
         }
         
@@ -468,7 +697,7 @@
             
             .footer-column {
                 flex: 1 0 45%;
-                margin-bottom: 30px;
+                margin-bottom: 40px;
             }
         }
         
@@ -481,22 +710,27 @@
             nav ul {
                 margin-top: 20px;
                 justify-content: center;
+                flex-wrap: wrap;
             }
             
             nav ul li {
-                margin: 0 10px;
+                margin: 0 10px 10px;
             }
             
             .hero h1 {
                 font-size: 2.5rem;
             }
             
-            .team-grid, .projects-grid {
+            .services-grid, .properties-grid, .testimonials-grid {
                 grid-template-columns: 1fr;
             }
             
             .footer-column {
                 flex: 1 0 100%;
+            }
+            
+            .search-form {
+                flex-direction: column;
             }
         }
     </style>
@@ -507,15 +741,20 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <i class="fas fa-rocket"></i>
-                    <span>InnovateTech</span>
+                    <div class="logo-icon">
+                        <div class="logo-r">R</div>
+                    </div>
+                    <div class="logo-text">
+                        <div class="company-name">REAL ESTATE</div>
+                        <div class="tagline">MANAGEMENT & RENTAL</div>
+                    </div>
                 </div>
                 <nav>
                     <ul>
                         <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#properties">Properties</a></li>
                         <li><a href="#about">About</a></li>
-                        <li><a href="#team">Team</a></li>
-                        <li><a href="#projects">Projects</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
@@ -526,152 +765,229 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
-            <h1>Innovating the Future Together</h1>
-            <p>We are a passionate team of developers, designers, and innovators creating cutting-edge solutions for a better tomorrow.</p>
-            <a href="#projects" class="btn">Explore Our Projects</a>
+            <h1>Find Your Perfect Property</h1>
+            <p>Professional real estate management and rental services for homeowners and tenants.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Comprehensive real estate solutions for property owners and tenants.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Property Management</h3>
+                        <p>Full-service property management including tenant screening, rent collection, and maintenance coordination.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Rental Services</h3>
+                        <p>Find your perfect rental property with our extensive listings and personalized search assistance.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Investment Consulting</h3>
+                        <p>Expert advice on real estate investments to maximize your returns and build your portfolio.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties Section -->
+    <section id="properties">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Properties</h2>
+                <p>Discover our selection of premium rental properties in prime locations.</p>
+            </div>
+            <div class="properties-grid">
+                <div class="property-card">
+                    <div class="property-img">
+                        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern Apartment">
+                    </div>
+                    <div class="property-info">
+                        <div class="property-price">$2,400/month</div>
+                        <div class="property-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            123 Downtown Ave, Metropolitan City
+                        </div>
+                        <div class="property-features">
+                            <div class="feature">
+                                <i class="fas fa-bed"></i>
+                                <span>3 Beds</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-bath"></i>
+                                <span>2 Baths</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-ruler-combined"></i>
+                                <span>1,200 sqft</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="property-card">
+                    <div class="property-img">
+                        <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxury Condo">
+                    </div>
+                    <div class="property-info">
+                        <div class="property-price">$3,200/month</div>
+                        <div class="property-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            456 Harbor View, Coastal City
+                        </div>
+                        <div class="property-features">
+                            <div class="feature">
+                                <i class="fas fa-bed"></i>
+                                <span>2 Beds</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-bath"></i>
+                                <span>2 Baths</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-ruler-combined"></i>
+                                <span>1,500 sqft</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="property-card">
+                    <div class="property-img">
+                        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Family House">
+                    </div>
+                    <div class="property-info">
+                        <div class="property-price">$2,800/month</div>
+                        <div class="property-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            789 Suburban Lane, Green Valley
+                        </div>
+                        <div class="property-features">
+                            <div class="feature">
+                                <i class="fas fa-bed"></i>
+                                <span>4 Beds</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-bath"></i>
+                                <span>3 Baths</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-ruler-combined"></i>
+                                <span>2,100 sqft</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about">
+    <section class="about" id="about">
         <div class="container">
             <div class="section-title">
                 <h2>About Us</h2>
-                <p>Learn more about our mission, vision, and the values that drive our work.</p>
+                <p>Learn more about our company and our commitment to excellence in real estate.</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>Our Story</h3>
-                    <p>Founded in 2018, InnovateTech has grown from a small startup to a leading technology company with a global presence. Our journey began with a simple idea: to leverage technology to solve complex problems and improve people's lives.</p>
-                    <p>Today, we specialize in developing innovative software solutions, mobile applications, and web platforms for clients across various industries. Our team of experts combines technical expertise with creative thinking to deliver exceptional results.</p>
-                    <p>We believe in collaboration, transparency, and continuous learning. These values guide our work and help us build lasting relationships with our clients and partners.</p>
-                    <a href="#contact" class="btn">Get In Touch</a>
+                    <h3>Your Trusted Real Estate Partner</h3>
+                    <p>With over 15 years of experience in the real estate industry, we have built a reputation for excellence in property management and rental services. Our team of dedicated professionals is committed to providing the highest level of service to both property owners and tenants.</p>
+                    <p>We understand that your property is one of your most valuable assets, and we treat it with the care and attention it deserves. Our comprehensive management services ensure that your investment is protected and optimized for maximum returns.</p>
+                    <p>For tenants, we offer a wide selection of quality rental properties and a seamless rental experience from application to move-in and beyond.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Properties Managed</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">Client Satisfaction</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Our Team">
+                    <img src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Our Team">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Team Section -->
-    <section id="team" style="background-color: #f5f7fa;">
+    <!-- Testimonials Section -->
+    <section class="testimonials">
         <div class="container">
             <div class="section-title">
-                <h2>Our Team</h2>
-                <p>Meet the talented individuals behind our success.</p>
+                <h2>Client Testimonials</h2>
+                <p>See what our clients have to say about our services.</p>
             </div>
-            <div class="team-grid">
-                <!-- Team Member 1 -->
-                <div class="team-member">
-                    <div class="member-img">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="John Doe">
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The team at Real Estate Management & Rental has been incredible. They found me the perfect apartment in just two weeks and made the entire process so smooth."
                     </div>
-                    <div class="member-info">
-                        <h3>John Doe</h3>
-                        <div class="position">CEO & Founder</div>
-                        <p>John leads our company with a vision for innovation and excellence. With over 15 years of experience in the tech industry.</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-github"></i></a>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Sarah Johnson">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Tenant</p>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Team Member 2 -->
-                <div class="team-member">
-                    <div class="member-img">
-                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Jane Smith">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "As a property owner, I couldn't be happier with their management services. They handle everything professionally and my rental income has increased by 20% since I started working with them."
                     </div>
-                    <div class="member-info">
-                        <h3>Jane Smith</h3>
-                        <div class="position">Lead Designer</div>
-                        <p>Jane is responsible for creating intuitive and beautiful user experiences. She has a passion for human-centered design.</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-dribbble"></i></a>
-                            <a href="#"><i class="fab fa-behance"></i></a>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Michael Thompson">
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael Thompson</h4>
+                            <p>Property Owner</p>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Team Member 3 -->
-                <div class="team-member">
-                    <div class="member-img">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Michael Johnson">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Their investment consulting service helped me identify profitable opportunities I would have otherwise missed. Highly recommended for anyone looking to grow their real estate portfolio."
                     </div>
-                    <div class="member-info">
-                        <h3>Michael Johnson</h3>
-                        <div class="position">Senior Developer</div>
-                        <p>Michael is our technical expert with deep knowledge in multiple programming languages and frameworks.</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-stack-overflow"></i></a>
-                            <a href="#"><i class="fab fa-github"></i></a>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Jennifer Lee">
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Projects</h2>
-                <p>Explore some of our recent work and innovative solutions.</p>
-            </div>
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Project One">
-                    </div>
-                    <div class="project-info">
-                        <h3>Smart Finance App</h3>
-                        <p>A revolutionary mobile application that helps users manage their finances with AI-powered insights.</p>
-                        <div class="project-tags">
-                            <span>Mobile</span>
-                            <span>FinTech</span>
-                            <span>AI</span>
+                        <div class="author-info">
+                            <h4>Jennifer Lee</h4>
+                            <p>Investor</p>
                         </div>
-                        <a href="#" class="btn">View Details</a>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Project Two">
-                    </div>
-                    <div class="project-info">
-                        <h3>EcoTrack Platform</h3>
-                        <p>A comprehensive platform for monitoring and reducing carbon footprint for businesses and individuals.</p>
-                        <div class="project-tags">
-                            <span>Web</span>
-                            <span>Sustainability</span>
-                            <span>Analytics</span>
-                        </div>
-                        <a href="#" class="btn">View Details</a>
-                    </div>
-                </div>
-                
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Project Three">
-                    </div>
-                    <div class="project-info">
-                        <h3>HealthConnect System</h3>
-                        <p>An integrated healthcare solution connecting patients, doctors, and medical facilities for better care coordination.</p>
-                        <div class="project-tags">
-                            <span>Healthcare</span>
-                            <span>IoT</span>
-                            <span>Cloud</span>
-                        </div>
-                        <a href="#" class="btn">View Details</a>
                     </div>
                 </div>
             </div>
@@ -679,11 +995,11 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" style="background-color: #f5f7fa;">
+    <section id="contact">
         <div class="container">
             <div class="section-title">
                 <h2>Contact Us</h2>
-                <p>Get in touch with us to discuss your project or learn more about our services.</p>
+                <p>Get in touch with our team for any inquiries or assistance.</p>
             </div>
             <div class="contact-content">
                 <div class="contact-info">
@@ -692,8 +1008,8 @@
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div class="contact-details">
-                            <h3>Our Location</h3>
-                            <p>123 Innovation Drive, Tech Valley, CA 94025, USA</p>
+                            <h3>Our Office</h3>
+                            <p>123 Real Estate Ave, Suite 500<br>Metropolitan City, MC 12345</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -711,7 +1027,7 @@
                         </div>
                         <div class="contact-details">
                             <h3>Email Address</h3>
-                            <p>info@innovatetech.com</p>
+                            <p>info@realestatemgmt.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -720,7 +1036,7 @@
                         </div>
                         <div class="contact-details">
                             <h3>Working Hours</h3>
-                            <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                            <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM</p>
                         </div>
                     </div>
                 </div>
@@ -754,38 +1070,38 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>InnovateTech</h3>
-                    <p>We are a team of passionate innovators creating cutting-edge solutions for a better tomorrow.</p>
+                    <h3>Real Estate Management & Rental</h3>
+                    <p>Your trusted partner for professional property management and rental services. We connect property owners with quality tenants and provide comprehensive management solutions.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
                         <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#properties">Properties</a></li>
                         <li><a href="#about">About Us</a></li>
-                        <li><a href="#team">Our Team</a></li>
-                        <li><a href="#projects">Projects</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Services</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Web Development</a></li>
-                        <li><a href="#">Mobile Apps</a></li>
-                        <li><a href="#">UI/UX Design</a></li>
-                        <li><a href="#">Cloud Solutions</a></li>
-                        <li><a href="#">Digital Transformation</a></li>
+                        <li><a href="#">Property Management</a></li>
+                        <li><a href="#">Rental Services</a></li>
+                        <li><a href="#">Investment Consulting</a></li>
+                        <li><a href="#">Tenant Screening</a></li>
+                        <li><a href="#">Maintenance Coordination</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Newsletter</h3>
-                    <p>Subscribe to our newsletter to get updates on our latest projects and insights.</p>
+                    <p>Subscribe to our newsletter to receive updates on new properties and real estate insights.</p>
                     <form>
                         <div class="form-group">
                             <input type="email" class="form-control" placeholder="Your email address">
@@ -795,7 +1111,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 InnovateTech. All Rights Reserved.</p>
+                <p>&copy; 2023 Real Estate Management & Rental. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
