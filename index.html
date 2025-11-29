@@ -4,110 +4,177 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>R3C Real Estate Management & Rental</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         :root {
-            --primary: #1a1a1a;
-            --secondary: #4a4a4a;
-            --accent: #c9a86c;
-            --background: #faf8f5;
-            --card-bg: #ffffff;
-            --border: #e8e4de;
+            --primary: #1a3a5f;
+            --secondary: #2c5aa0;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --text: #333;
+            --text-light: #6c757d;
         }
-
+        
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--background);
-            color: var(--primary);
+            background-color: #ffffff;
+            color: var(--text);
+            font-family: 'Open Sans', sans-serif;
             line-height: 1.6;
         }
-
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        
         .container {
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 15px;
         }
-
-        /* Header */
+        
+        /* Header Styles */
         header {
-            background: var(--card-bg);
-            border-bottom: 1px solid var(--border);
-            position: fixed;
-            width: 100%;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 100;
         }
-
+        
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 24px;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 15px 0;
         }
-
+        
         .logo {
-            height: 50px;
-        }
-
-        nav {
             display: flex;
-            gap: 32px;
             align-items: center;
         }
-
-        nav a {
+        
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            overflow: hidden;
+        }
+        
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text .company-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .logo-text .tagline {
+            font-size: 12px;
+            color: var(--text-light);
+            letter-spacing: 1px;
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--dark);
             text-decoration: none;
-            color: var(--secondary);
             font-weight: 500;
-            font-size: 14px;
             transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
         }
 
-        nav a:hover {
-            color: var(--accent);
-        }
-
-        /* Language Switcher Styles */
+        /* Language Switcher */
         .lang-switcher {
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-left: 24px;
-            padding-left: 24px;
-            border-left: 1px solid var(--border);
+            margin-left: 25px;
+            padding-left: 25px;
+            border-left: 1px solid #ddd;
         }
 
         .lang-btn {
             padding: 6px 12px;
-            border: 1px solid var(--border);
-            background: var(--background);
-            color: var(--secondary);
+            border: 1px solid #ddd;
+            background: white;
+            color: var(--text-light);
             font-size: 13px;
             font-weight: 500;
-            border-radius: 6px;
+            border-radius: 4px;
             cursor: pointer;
             transition: all 0.3s;
         }
 
         .lang-btn:hover {
-            border-color: var(--accent);
-            color: var(--accent);
+            border-color: var(--secondary);
+            color: var(--secondary);
         }
 
         .lang-btn.active {
-            background: var(--accent);
-            border-color: var(--accent);
+            background: var(--secondary);
+            border-color: var(--secondary);
             color: white;
         }
 
+        /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -124,38 +191,37 @@
             margin: 5px 0;
             transition: 0.3s;
         }
-
+        
         /* Hero Section */
         .hero {
-            padding: 160px 0 100px;
+            background: linear-gradient(rgba(26, 58, 95, 0.85), rgba(26, 58, 95, 0.9)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            color: white;
+            padding: 120px 0;
             text-align: center;
-            background: linear-gradient(180deg, var(--card-bg) 0%, var(--background) 100%);
         }
-
+        
         .hero h1 {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 24px;
-            color: var(--primary);
+            font-size: 3rem;
+            margin-bottom: 20px;
         }
 
         .hero h1 span {
-            color: var(--accent);
+            color: #f8d56b;
         }
-
+        
         .hero p {
-            font-size: 18px;
-            color: var(--secondary);
-            max-width: 700px;
-            margin: 0 auto 40px;
+            font-size: 1.1rem;
+            max-width: 750px;
+            margin: 0 auto 50px;
             line-height: 1.8;
+            opacity: 0.95;
         }
 
         .hero-stats {
             display: flex;
             justify-content: center;
             gap: 60px;
-            margin-top: 60px;
+            margin-top: 50px;
         }
 
         .stat-item {
@@ -163,109 +229,123 @@
         }
 
         .stat-number {
-            font-size: 42px;
+            font-size: 3rem;
             font-weight: 700;
-            color: var(--accent);
+            color: #f8d56b;
         }
 
         .stat-label {
             font-size: 14px;
-            color: var(--secondary);
+            opacity: 0.9;
             margin-top: 8px;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 20px auto 0;
+            line-height: 1.8;
         }
 
         /* About Section */
         .about {
-            padding: 100px 0;
-            background: var(--card-bg);
-        }
-
-        .section-title {
-            font-size: 36px;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 16px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--secondary);
-            max-width: 800px;
-            margin: 0 auto 60px;
-            font-size: 16px;
-            line-height: 1.8;
+            background-color: var(--light);
         }
 
         .about-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
+            gap: 30px;
         }
 
         .about-card {
-            background: var(--background);
-            padding: 40px 32px;
-            border-radius: 16px;
-            border: 1px solid var(--border);
+            background: white;
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
         }
 
         .about-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 28px;
         }
 
         .about-card h3 {
-            font-size: 20px;
-            margin-bottom: 16px;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
             color: var(--primary);
         }
 
         .about-card p {
-            color: var(--secondary);
-            font-size: 15px;
+            color: var(--text-light);
             line-height: 1.7;
         }
-
-        .icon-wrapper {
-            width: 56px;
-            height: 56px;
-            background: var(--accent);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-        }
-
-        .icon-wrapper svg {
-            width: 28px;
-            height: 28px;
-            stroke: white;
-            fill: none;
-        }
-
+        
         /* Services Section */
         .services {
-            padding: 100px 0;
-            background: var(--background);
+            background-color: white;
         }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
+        
+        .service-details {
+            margin-top: 40px;
         }
-
-        .service-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            border: 1px solid var(--border);
+        
+        .service-category {
+            margin-bottom: 40px;
+            background: var(--light);
+            border-radius: 8px;
             overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
         }
 
-        .service-header {
-            padding: 32px;
+        .service-category-header {
+            background: var(--primary);
+            color: white;
+            padding: 20px 30px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -273,145 +353,118 @@
             transition: background 0.3s;
         }
 
-        .service-header:hover {
-            background: var(--background);
+        .service-category-header:hover {
+            background: var(--secondary);
+        }
+        
+        .service-category-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
         }
 
-        .service-header h3 {
-            font-size: 20px;
-            font-weight: 600;
-        }
-
-        .service-header .arrow {
-            width: 24px;
-            height: 24px;
+        .service-category-header i {
             transition: transform 0.3s;
         }
 
-        .service-header.active .arrow {
+        .service-category-header.active i {
             transform: rotate(180deg);
         }
 
-        .service-content {
+        .service-category-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.4s ease;
         }
 
-        .service-content.active {
-            max-height: 500px;
+        .service-category-content.active {
+            max-height: 600px;
         }
-
-        .service-content ul {
-            padding: 0 32px 32px;
-            list-style: none;
+        
+        .service-list {
+            list-style-type: none;
+            padding: 20px 30px;
         }
-
-        .service-content li {
+        
+        .service-list li {
             padding: 12px 0;
-            border-bottom: 1px solid var(--border);
-            color: var(--secondary);
-            font-size: 15px;
+            border-bottom: 1px solid #e0e0e0;
             display: flex;
-            align-items: flex-start;
-            gap: 12px;
+            align-items: center;
+            color: var(--text);
         }
 
-        .service-content li:last-child {
+        .service-list li:last-child {
             border-bottom: none;
         }
-
-        .service-content li::before {
-            content: "";
-            width: 6px;
-            height: 6px;
-            background: var(--accent);
-            border-radius: 50%;
-            margin-top: 8px;
-            flex-shrink: 0;
+        
+        .service-list li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--secondary);
+            margin-right: 15px;
         }
-
-        .service-tag {
-            display: inline-block;
-            padding: 4px 12px;
-            background: var(--accent);
-            color: white;
-            font-size: 12px;
-            font-weight: 500;
-            border-radius: 20px;
-            margin-bottom: 8px;
-        }
-
+        
         /* Contact Section */
         .contact {
-            padding: 100px 0;
-            background: var(--card-bg);
+            background-color: var(--light);
         }
 
-        .contact-grid {
+        .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 50px;
             align-items: start;
         }
 
         .contact-info h3 {
-            font-size: 28px;
-            margin-bottom: 24px;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
         }
 
-        .contact-info p {
-            color: var(--secondary);
-            margin-bottom: 40px;
+        .contact-info > p {
+            color: var(--text-light);
+            margin-bottom: 30px;
             line-height: 1.8;
         }
 
         .contact-item {
             display: flex;
             align-items: flex-start;
-            gap: 16px;
-            margin-bottom: 24px;
+            margin-bottom: 25px;
         }
 
         .contact-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--background);
-            border-radius: 12px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-right: 15px;
             flex-shrink: 0;
+            font-size: 18px;
         }
 
-        .contact-icon svg {
-            width: 22px;
-            height: 22px;
-            stroke: var(--accent);
-            fill: none;
+        .contact-details h4 {
+            margin-bottom: 5px;
+            color: var(--primary);
+            font-size: 1rem;
         }
 
-        .contact-item-content h4 {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .contact-item-content p {
-            color: var(--secondary);
-            font-size: 15px;
+        .contact-details p {
+            color: var(--text-light);
             margin: 0;
         }
 
         .contact-map {
-            background: var(--background);
-            border-radius: 16px;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--border);
+            border-radius: 8px;
             overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 400px;
         }
 
         .contact-map iframe {
@@ -419,128 +472,183 @@
             height: 100%;
             border: none;
         }
-
+        
         /* Footer */
         footer {
-            background: var(--primary);
+            background-color: var(--dark);
             color: white;
-            padding: 60px 0 30px;
+            padding: 70px 0 20px;
         }
-
+        
         .footer-content {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
-
-        .footer-brand p {
-            color: rgba(255, 255, 255, 0.6);
-            margin-top: 16px;
-            max-width: 300px;
-            font-size: 14px;
+        
+        .footer-column {
+            flex: 1;
+            margin-right: 30px;
+        }
+        
+        .footer-column:last-child {
+            margin-right: 0;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-column p {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.7);
             line-height: 1.7;
         }
-
-        .footer-links h4 {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--accent);
+        
+        .footer-links {
+            list-style: none;
         }
-
-        .footer-links a {
-            display: block;
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            font-size: 14px;
+        
+        .footer-links li {
             margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
             transition: color 0.3s;
         }
-
+        
         .footer-links a:hover {
-            color: white;
+            color: var(--secondary);
         }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 30px;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 14px;
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
         }
-
-        .logo-footer {
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
             height: 40px;
-            filter: brightness(0) invert(1);
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin-right: 10px;
+            transition: all 0.3s;
         }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
 
-        /* Responsive */
-        @media (max-width: 968px) {
-            .hero h1 {
-                font-size: 36px;
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-wrap: wrap;
+            }
+            
+            .footer-column {
+                flex: 1 0 45%;
+                margin-bottom: 40px;
             }
 
             .hero-stats {
                 gap: 40px;
             }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                gap: 40px;
-            }
         }
-
+        
         @media (max-width: 768px) {
+            .header-content {
+                flex-wrap: wrap;
+            }
+
             nav {
                 display: none;
+                width: 100%;
+                order: 3;
+            }
+
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                margin-top: 20px;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .lang-switcher {
+                margin: 15px 0 0;
+                padding: 0;
+                border: none;
+                justify-content: center;
             }
 
             .mobile-menu-btn {
                 display: block;
             }
-
-            .lang-switcher {
-                position: fixed;
-                top: 80px;
-                right: 24px;
-                border: none;
-                padding: 0;
-                margin: 0;
-                z-index: 999;
-            }
-
+            
             .hero h1 {
-                font-size: 28px;
+                font-size: 2rem;
             }
 
             .hero p {
-                font-size: 16px;
+                font-size: 1rem;
             }
 
             .hero-stats {
                 flex-direction: column;
-                gap: 24px;
+                gap: 25px;
             }
 
             .stat-number {
-                font-size: 32px;
+                font-size: 2.5rem;
             }
 
-            .section-title {
-                font-size: 28px;
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .footer-column {
+                flex: 1 0 100%;
             }
         }
     </style>
@@ -549,15 +657,12 @@
     <!-- Language detection and redirect script -->
     <script>
         (function() {
-            // Get language from cookie
             function getCookie(name) {
                 const value = "; " + document.cookie;
                 const parts = value.split("; " + name + "=");
                 if (parts.length === 2) return parts.pop().split(";").shift();
                 return null;
             }
-
-            // Check if we need to redirect
             const lang = getCookie('r3c_lang');
             if (lang === 'zh' && !window.location.pathname.includes('cindex.html')) {
                 window.location.href = 'cindex.html';
@@ -567,24 +672,37 @@
 
     <!-- Header -->
     <header>
-        <div class="header-content">
-            <img src="/images/bae7adafccb3e907c9ff922ebd424a91.jpg" alt="R3C Logo" class="logo">
-            <nav>
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#services">Services</a>
-                <a href="#contact">Contact</a>
-                <!-- Language Switcher -->
-                <div class="lang-switcher">
-                    <button class="lang-btn active" onclick="switchLang('en')">EN</button>
-                    <button class="lang-btn" onclick="switchLang('zh')">中文</button>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <img src="./images/1db6342a-a99e-4e7b-8a7e-01f3a849aca0.png" alt="R3C Logo">
+                    </div>
+                    <div class="logo-text">
+                        <div class="company-name">REAL ESTATE</div>
+                        <div class="tagline">MANAGEMENT & RENTAL</div>
+                    </div>
                 </div>
-            </nav>
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li>
+                            <div class="lang-switcher">
+                                <button class="lang-btn active" onclick="switchLang('en')">EN</button>
+                                <button class="lang-btn" onclick="switchLang('zh')">中文</button>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -613,36 +731,28 @@
     <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
-            <h2 class="section-title">Why Choose R3C?</h2>
-            <p class="section-subtitle">Different country, different language, and different culture — long-distance management creates misunderstandings and troubles. Gone are the days of stress. Our mission is to provide a seamless, data-driven, and human-centric management experience that delivers both financial peace of mind and personal convenience.</p>
+            <div class="section-title">
+                <h2>Why Choose R3C?</h2>
+                <p>Different country, different language, and different culture — long-distance management creates misunderstandings and troubles. Gone are the days of stress. Our mission is to provide a seamless, data-driven, and human-centric management experience.</p>
+            </div>
             <div class="about-grid">
                 <div class="about-card">
-                    <div class="icon-wrapper">
-                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
+                    <div class="about-icon">
+                        <i class="fas fa-users"></i>
                     </div>
                     <h3>Organized Team</h3>
                     <p>We achieve excellence through a powerful combination of organized team, systematic processes, and the empathetic service of your dedicated Chief Consultant.</p>
                 </div>
                 <div class="about-card">
-                    <div class="icon-wrapper">
-                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                        </svg>
+                    <div class="about-icon">
+                        <i class="fas fa-shield-alt"></i>
                     </div>
                     <h3>Asset Protection</h3>
-                    <p>We go beyond simple maintenance. We are your partner, proactively working to protect and enhance the value of your asset while ensuring it is a source of joy, not anxiety.</p>
+                    <p>We go beyond simple maintenance. We are your partner, proactively working to protect and enhance the value of your asset while ensuring it is a source of joy.</p>
                 </div>
                 <div class="about-card">
-                    <div class="icon-wrapper">
-                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                        </svg>
+                    <div class="about-icon">
+                        <i class="fas fa-check-circle"></i>
                     </div>
                     <h3>Complete Trust</h3>
                     <p>Choose R3C for a service that sets a new standard, where your complete trust is our ultimate reward.</p>
@@ -654,22 +764,19 @@
     <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
-            <h2 class="section-title">Our Comprehensive Services</h2>
-            <p class="section-subtitle">We offer an end-to-end solution designed to cover every aspect of your property's life cycle, from tenant placement to long-term value growth.</p>
-            <div class="services-grid">
-                <!-- Property Management -->
-                <div class="service-card">
-                    <div class="service-header" onclick="toggleService(this)">
-                        <div>
-                            <span class="service-tag">Core Service</span>
-                            <h3>Property Management</h3>
-                        </div>
-                        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
+            <div class="section-title">
+                <h2>Our Comprehensive Services</h2>
+                <p>We offer an end-to-end solution designed to cover every aspect of your property's life cycle, from tenant placement to long-term value growth.</p>
+            </div>
+            
+            <div class="service-details">
+                <div class="service-category">
+                    <div class="service-category-header active" onclick="toggleService(this)">
+                        <h3><i class="fas fa-building" style="margin-right: 10px;"></i>Property Management</h3>
+                        <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="service-content">
-                        <ul>
+                    <div class="service-category-content active">
+                        <ul class="service-list">
                             <li>Tenant Management</li>
                             <li>Rent Collection & Financial Remittance</li>
                             <li>Transparent Accounting & Deductible Expense Tracking</li>
@@ -681,20 +788,14 @@
                         </ul>
                     </div>
                 </div>
-
-                <!-- Rental Service -->
-                <div class="service-card">
-                    <div class="service-header" onclick="toggleService(this)">
-                        <div>
-                            <span class="service-tag">Rental</span>
-                            <h3>Rental Service</h3>
-                        </div>
-                        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
+                
+                <div class="service-category">
+                    <div class="service-category-header" onclick="toggleService(this)">
+                        <h3><i class="fas fa-key" style="margin-right: 10px;"></i>Rental Service</h3>
+                        <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="service-content">
-                        <ul>
+                    <div class="service-category-content">
+                        <ul class="service-list">
                             <li>Strategic Marketing Promotion & Tenant Sourcing</li>
                             <li>Rigorous Tenant Screening & Background Checks</li>
                             <li>Lease Agreement Preparation & Signing</li>
@@ -703,43 +804,30 @@
                         </ul>
                     </div>
                 </div>
-
-                <!-- Owner Services -->
-                <div class="service-card">
-                    <div class="service-header" onclick="toggleService(this)">
-                        <div>
-                            <span class="service-tag">Premium</span>
-                            <h3>Owner Services</h3>
-                        </div>
-                        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
+                
+                <div class="service-category">
+                    <div class="service-category-header" onclick="toggleService(this)">
+                        <h3><i class="fas fa-user-tie" style="margin-right: 10px;"></i>Owner Service</h3>
+                        <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="service-content">
-                        <ul>
+                    <div class="service-category-content">
+                        <ul class="service-list">
                             <li>Tax Service for Owner and Property</li>
                             <li>Pick Up Service from Airport</li>
-                            <li>Open and Reactivate Bank Account</li>
-                            <li>Lawyer Consultant</li>
+                            <li>Bank Account Opening & Reactivation</li>
+                            <li>Lawyer Consultation</li>
                             <li>Lifestyle Concierge Services (Rent/Buy Car, Order Furniture, Set Up Internet, Buy SIM Card, etc.)</li>
-                            <li>Investment Consultancy and More</li>
                         </ul>
                     </div>
                 </div>
-
-                <!-- Value Enhancement -->
-                <div class="service-card">
-                    <div class="service-header" onclick="toggleService(this)">
-                        <div>
-                            <span class="service-tag">Value-Add</span>
-                            <h3>Value Enhancement Services</h3>
-                        </div>
-                        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
+                
+                <div class="service-category">
+                    <div class="service-category-header" onclick="toggleService(this)">
+                        <h3><i class="fas fa-chart-line" style="margin-right: 10px;"></i>Investment Consultancy & Value Enhancement</h3>
+                        <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="service-content">
-                        <ul>
+                    <div class="service-category-content">
+                        <ul class="service-list">
                             <li>Capital Works Planning & Project Management</li>
                             <li>Utility Setup & Management for Building</li>
                             <li>Connection to Local Services (Cleaning, Gardening, Moving, etc.)</li>
@@ -753,67 +841,58 @@
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title">Get in Touch</h2>
-            <p class="section-subtitle">Ready to experience stress-free property management? Contact us today.</p>
-            <div class="contact-grid">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with our team for professional property management services in Greece.</p>
+            </div>
+            <div class="contact-content">
                 <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <p>We're here to help you manage your overseas property with complete peace of mind. Reach out to us through any of the channels below.</p>
+                    <h3>Get In Touch</h3>
+                    <p>We're here to help you manage your overseas property with peace of mind. Reach out to us for any inquiries.</p>
                     
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
+                            <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <div class="contact-item-content">
+                        <div class="contact-details">
                             <h4>Address</h4>
                             <p>Char. Trikoupi 160, Athina, Greece, 114 72</p>
                         </div>
                     </div>
-
+                    
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                            </svg>
+                            <i class="fas fa-phone"></i>
                         </div>
-                        <div class="contact-item-content">
+                        <div class="contact-details">
                             <h4>Phone</h4>
                             <p>021 2810 7022</p>
                         </div>
                     </div>
-
+                    
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                <polyline points="22,6 12,13 2,6"></polyline>
-                            </svg>
+                            <i class="fas fa-envelope"></i>
                         </div>
-                        <div class="contact-item-content">
+                        <div class="contact-details">
                             <h4>Email</h4>
                             <p>R3Cservice@gmail.com</p>
                         </div>
                     </div>
-
+                    
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
+                            <i class="fas fa-clock"></i>
                         </div>
-                        <div class="contact-item-content">
+                        <div class="contact-details">
                             <h4>Working Hours</h4>
                             <p>Monday - Friday: 9:00 - 17:00</p>
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="contact-map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3144.5!2d23.7275!3d37.9838!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDU5JzA3LjciTiAyM8KwNDMnMjguOCJF!5e0!3m2!1sen!2s!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3144.1234567890123!2d23.7275!3d37.9838!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDU5JzAxLjciTiAyM8KwNDMnMzkuMCJF!5e0!3m2!1sen!2sgr!4v1234567890123" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -823,49 +902,103 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-brand">
-                    <img src="/images/bae7adafccb3e907c9ff922ebd424a91.jpg" alt="R3C Logo" class="logo-footer">
-                    <p>Your trusted guardian for overseas property management. We transform the complexity of international property ownership into a seamless experience.</p>
+                <div class="footer-column">
+                    <div class="logo" style="margin-bottom: 20px;">
+                        <div class="logo-icon" style="background: var(--secondary);">
+                            <div class="logo-r">R3C</div>
+                        </div>
+                        <div class="logo-text">
+                            <div class="company-name" style="color: white;">REAL ESTATE</div>
+                            <div class="tagline" style="color: rgba(255,255,255,0.7);">MANAGEMENT & RENTAL</div>
+                        </div>
+                    </div>
+                    <p>Your trusted guardian for overseas property management. We provide seamless, data-driven, and human-centric management experience.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
                 </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <a href="#home">Home</a>
-                    <a href="#about">About Us</a>
-                    <a href="#services">Services</a>
-                    <a href="#contact">Contact</a>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
                 </div>
-                <div class="footer-links">
-                    <h4>Services</h4>
-                    <a href="#services">Property Management</a>
-                    <a href="#services">Rental Service</a>
-                    <a href="#services">Owner Services</a>
-                    <a href="#services">Value Enhancement</a>
+                
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">Property Management</a></li>
+                        <li><a href="#services">Rental Service</a></li>
+                        <li><a href="#services">Owner Service</a></li>
+                        <li><a href="#services">Investment Consultancy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i>Athens, Greece</li>
+                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i>021 2810 7022</li>
+                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i>R3Cservice@gmail.com</li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 R3C Real Estate Management & Rental. All rights reserved.</p>
+            
+            <div class="copyright">
+                <p>&copy; 2025 R3C Real Estate Management & Rental. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Toggle service accordion
-        function toggleService(header) {
-            const content = header.nextElementSibling;
-            const isActive = content.classList.contains('active');
-            
-            // Close all other accordions
-            document.querySelectorAll('.service-content').forEach(c => c.classList.remove('active'));
-            document.querySelectorAll('.service-header').forEach(h => h.classList.remove('active'));
-            
-            // Toggle current accordion
-            if (!isActive) {
-                content.classList.add('active');
-                header.classList.add('active');
+        // Language Switcher Functions
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = name + '=' + value + ';expires=' + expires.toUTCString() + ';path=/';
+        }
+
+        function switchLang(lang) {
+            setCookie('r3c_lang', lang, 365);
+            if (lang === 'zh') {
+                window.location.href = 'cindex.html';
+            } else {
+                window.location.href = 'index.html';
             }
         }
 
-        // Smooth scrolling for navigation links
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('active');
+        }
+
+        // Service Accordion Toggle
+        function toggleService(header) {
+            const content = header.nextElementSibling;
+            const isActive = header.classList.contains('active');
+            
+            // Close all other accordions
+            document.querySelectorAll('.service-category-header').forEach(h => {
+                h.classList.remove('active');
+                h.nextElementSibling.classList.remove('active');
+            });
+            
+            // Toggle current accordion
+            if (!isActive) {
+                header.classList.add('active');
+                content.classList.add('active');
+            }
+        }
+
+        // Smooth Scroll for Navigation Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -875,29 +1008,11 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
+                    // Close mobile menu if open
+                    document.getElementById('mainNav').classList.remove('active');
                 }
             });
         });
-
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const nav = document.querySelector('nav');
-            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-        }
-
-        function switchLang(lang) {
-            // Set cookie for 365 days
-            const expires = new Date();
-            expires.setTime(expires.getTime() + (365 * 24 * 60 * 60 * 1000));
-            document.cookie = "r3c_lang=" + lang + ";expires=" + expires.toUTCString() + ";path=/";
-            
-            // Redirect to appropriate page
-            if (lang === 'zh') {
-                window.location.href = 'cindex.html';
-            } else {
-                window.location.href = 'index.html';
-            }
-        }
     </script>
 </body>
 </html>
