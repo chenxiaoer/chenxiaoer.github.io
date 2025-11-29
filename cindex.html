@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>R3C Real Estate Management & Rental</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>R3C 海外房产管理与租赁</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -22,7 +22,7 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Noto Sans SC', 'Inter', sans-serif;
             background-color: var(--background);
             color: var(--primary);
             line-height: 1.6;
@@ -75,7 +75,6 @@
             color: var(--accent);
         }
 
-        /* Language Switcher Styles */
         .lang-switcher {
             display: flex;
             align-items: center;
@@ -557,10 +556,10 @@
                 return null;
             }
 
-            // Check if we need to redirect
+            // Check if we need to redirect (default is English)
             const lang = getCookie('r3c_lang');
-            if (lang === 'zh' && !window.location.pathname.includes('cindex.html')) {
-                window.location.href = 'cindex.html';
+            if ((lang === 'en' || lang === null) && window.location.pathname.includes('cindex.html')) {
+                window.location.href = 'index.html';
             }
         })();
     </script>
@@ -570,14 +569,14 @@
         <div class="header-content">
             <img src="/images/bae7adafccb3e907c9ff922ebd424a91.jpg" alt="R3C Logo" class="logo">
             <nav>
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#services">Services</a>
-                <a href="#contact">Contact</a>
+                <a href="#home">首页</a>
+                <a href="#about">关于我们</a>
+                <a href="#services">服务项目</a>
+                <a href="#contact">联系我们</a>
                 <!-- Language Switcher -->
                 <div class="lang-switcher">
-                    <button class="lang-btn active" onclick="switchLang('en')">EN</button>
-                    <button class="lang-btn" onclick="switchLang('zh')">中文</button>
+                    <button class="lang-btn" onclick="switchLang('en')">EN</button>
+                    <button class="lang-btn active" onclick="switchLang('zh')">中文</button>
                 </div>
             </nav>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
@@ -591,20 +590,20 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
-            <h1>Your Trusted Guardian for<br><span>Overseas Property</span></h1>
-            <p>We see your overseas property not just as an investment, but as a home. That's why our vision is to become the most trusted guardian of your international assets and the definitive benchmark for excellence in property management.</p>
+            <h1>您值得信赖的<br><span>海外房产守护者</span></h1>
+            <p>我们将您的海外房产不仅视为投资，更视为家。因此，我们的愿景是成为您国际资产最值得信赖的守护者，以及房产管理卓越服务的行业标杆。</p>
             <div class="hero-stats">
                 <div class="stat-item">
                     <div class="stat-number">8+</div>
-                    <div class="stat-label">Years of Experience</div>
+                    <div class="stat-label">年行业经验</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">500+</div>
-                    <div class="stat-label">Properties Managed</div>
+                    <div class="stat-label">管理房产数量</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">98%</div>
-                    <div class="stat-label">Client Satisfaction</div>
+                    <div class="stat-label">客户满意度</div>
                 </div>
             </div>
         </div>
@@ -613,8 +612,8 @@
     <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
-            <h2 class="section-title">Why Choose R3C?</h2>
-            <p class="section-subtitle">Different country, different language, and different culture — long-distance management creates misunderstandings and troubles. Gone are the days of stress. Our mission is to provide a seamless, data-driven, and human-centric management experience that delivers both financial peace of mind and personal convenience.</p>
+            <h2 class="section-title">为什么选择 R3C？</h2>
+            <p class="section-subtitle">不同的国家、不同的语言、不同的文化——远程管理往往带来误解和困扰。告别焦虑的日子，我们的使命是提供无缝衔接、数据驱动、以人为本的管理体验，让您在财务上安心，生活上便捷。</p>
             <div class="about-grid">
                 <div class="about-card">
                     <div class="icon-wrapper">
@@ -625,8 +624,8 @@
                             <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                         </svg>
                     </div>
-                    <h3>Organized Team</h3>
-                    <p>We achieve excellence through a powerful combination of organized team, systematic processes, and the empathetic service of your dedicated Chief Consultant.</p>
+                    <h3>专业团队</h3>
+                    <p>我们通过高效的团队组织、系统化的流程，以及您专属首席顾问的贴心服务，实现卓越的管理品质。</p>
                 </div>
                 <div class="about-card">
                     <div class="icon-wrapper">
@@ -634,8 +633,8 @@
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                         </svg>
                     </div>
-                    <h3>Asset Protection</h3>
-                    <p>We go beyond simple maintenance. We are your partner, proactively working to protect and enhance the value of your asset while ensuring it is a source of joy, not anxiety.</p>
+                    <h3>资产守护</h3>
+                    <p>我们不仅仅是简单的维护。我们是您的合作伙伴，积极主动地保护和提升您资产的价值，确保它成为快乐的源泉，而非焦虑的根源。</p>
                 </div>
                 <div class="about-card">
                     <div class="icon-wrapper">
@@ -644,8 +643,8 @@
                             <polyline points="22 4 12 14.01 9 11.01"></polyline>
                         </svg>
                     </div>
-                    <h3>Complete Trust</h3>
-                    <p>Choose R3C for a service that sets a new standard, where your complete trust is our ultimate reward.</p>
+                    <h3>值得信赖</h3>
+                    <p>选择 R3C，选择一个树立新标准的服务，您的完全信赖是我们的终极回报。</p>
                 </div>
             </div>
         </div>
@@ -654,15 +653,15 @@
     <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
-            <h2 class="section-title">Our Comprehensive Services</h2>
-            <p class="section-subtitle">We offer an end-to-end solution designed to cover every aspect of your property's life cycle, from tenant placement to long-term value growth.</p>
+            <h2 class="section-title">我们的全面服务</h2>
+            <p class="section-subtitle">我们提供端到端的解决方案，涵盖您房产生命周期的每一个环节，从租客安置到长期价值增长。</p>
             <div class="services-grid">
                 <!-- Property Management -->
                 <div class="service-card">
                     <div class="service-header" onclick="toggleService(this)">
                         <div>
-                            <span class="service-tag">Core Service</span>
-                            <h3>Property Management</h3>
+                            <span class="service-tag">核心服务</span>
+                            <h3>物业管理</h3>
                         </div>
                         <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"></polyline>
@@ -670,14 +669,14 @@
                     </div>
                     <div class="service-content">
                         <ul>
-                            <li>Tenant Management</li>
-                            <li>Rent Collection & Financial Remittance</li>
-                            <li>Transparent Accounting & Deductible Expense Tracking</li>
-                            <li>Detailed Seasonal Performance Reports</li>
-                            <li>Property Maintenance & Care</li>
-                            <li>Coordinated Repairs & Preventive Maintenance</li>
-                            <li>Trusted Vendor Management & Quality Control</li>
-                            <li>Key Holding & Secure Access Management</li>
+                            <li>租客管理</li>
+                            <li>租金收取与财务汇款</li>
+                            <li>透明的会计与抵扣费用跟踪</li>
+                            <li>详细的季度业绩报告</li>
+                            <li>物业维护与看护</li>
+                            <li>协调维修与预防性维护</li>
+                            <li>可信赖的供应商管理与质量控制</li>
+                            <li>钥匙保管与安全访问管理</li>
                         </ul>
                     </div>
                 </div>
@@ -686,8 +685,8 @@
                 <div class="service-card">
                     <div class="service-header" onclick="toggleService(this)">
                         <div>
-                            <span class="service-tag">Rental</span>
-                            <h3>Rental Service</h3>
+                            <span class="service-tag">租赁服务</span>
+                            <h3>租赁服务</h3>
                         </div>
                         <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"></polyline>
@@ -695,11 +694,11 @@
                     </div>
                     <div class="service-content">
                         <ul>
-                            <li>Strategic Marketing Promotion & Tenant Sourcing</li>
-                            <li>Rigorous Tenant Screening & Background Checks</li>
-                            <li>Lease Agreement Preparation & Signing</li>
-                            <li>Move-in & Move-out Inspections</li>
-                            <li>Key Holding & Secure Visit Appointment</li>
+                            <li>战略性营销与租客寻找</li>
+                            <li>严格的租客筛选与背景调查</li>
+                            <li>租赁协议准备与签署</li>
+                            <li>入住与退租检查</li>
+                            <li>钥匙保管与房产安全访问预约</li>
                         </ul>
                     </div>
                 </div>
@@ -708,8 +707,8 @@
                 <div class="service-card">
                     <div class="service-header" onclick="toggleService(this)">
                         <div>
-                            <span class="service-tag">Premium</span>
-                            <h3>Owner Services</h3>
+                            <span class="service-tag">尊享服务</span>
+                            <h3>业主增值服务</h3>
                         </div>
                         <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"></polyline>
@@ -717,12 +716,12 @@
                     </div>
                     <div class="service-content">
                         <ul>
-                            <li>Tax Service for Owner and Property</li>
-                            <li>Pick Up Service from Airport</li>
-                            <li>Open and Reactivate Bank Account</li>
-                            <li>Lawyer Consultant</li>
-                            <li>Lifestyle Concierge Services (Rent/Buy Car, Order Furniture, Set Up Internet, Buy SIM Card, etc.)</li>
-                            <li>Investment Consultancy and More</li>
+                            <li>业主税费管理</li>
+                            <li>接送机服务</li>
+                            <li>银行开户或激活</li>
+                            <li>法律咨询</li>
+                            <li>生活便利服务（租/买车、订购家具、开通网络、购买电话卡等）</li>
+                            <li>投资咨询及更多</li>
                         </ul>
                     </div>
                 </div>
@@ -731,8 +730,8 @@
                 <div class="service-card">
                     <div class="service-header" onclick="toggleService(this)">
                         <div>
-                            <span class="service-tag">Value-Add</span>
-                            <h3>Value Enhancement Services</h3>
+                            <span class="service-tag">增值服务</span>
+                            <h3>价值提升服务</h3>
                         </div>
                         <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"></polyline>
@@ -740,9 +739,9 @@
                     </div>
                     <div class="service-content">
                         <ul>
-                            <li>Capital Works Planning & Project Management</li>
-                            <li>Utility Setup & Management for Building</li>
-                            <li>Connection to Local Services (Cleaning, Gardening, Moving, etc.)</li>
+                            <li>翻新工程规划与项目管理</li>
+                            <li>整楼公共物业建立与管理</li>
+                            <li>对接本地服务（清洁、园艺、搬家等）</li>
                         </ul>
                     </div>
                 </div>
@@ -753,12 +752,12 @@
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title">Get in Touch</h2>
-            <p class="section-subtitle">Ready to experience stress-free property management? Contact us today.</p>
+            <h2 class="section-title">联系我们</h2>
+            <p class="section-subtitle">准备好体验无忧的房产管理了吗？立即联系我们。</p>
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <p>We're here to help you manage your overseas property with complete peace of mind. Reach out to us through any of the channels below.</p>
+                    <h3>联系方式</h3>
+                    <p>我们随时为您提供海外房产管理服务，让您完全安心。请通过以下任一渠道与我们联系。</p>
                     
                     <div class="contact-item">
                         <div class="contact-icon">
@@ -768,7 +767,7 @@
                             </svg>
                         </div>
                         <div class="contact-item-content">
-                            <h4>Address</h4>
+                            <h4>地址</h4>
                             <p>Char. Trikoupi 160, Athina, Greece, 114 72</p>
                         </div>
                     </div>
@@ -780,7 +779,7 @@
                             </svg>
                         </div>
                         <div class="contact-item-content">
-                            <h4>Phone</h4>
+                            <h4>电话</h4>
                             <p>021 2810 7022</p>
                         </div>
                     </div>
@@ -793,7 +792,7 @@
                             </svg>
                         </div>
                         <div class="contact-item-content">
-                            <h4>Email</h4>
+                            <h4>邮箱</h4>
                             <p>R3Cservice@gmail.com</p>
                         </div>
                     </div>
@@ -806,8 +805,8 @@
                             </svg>
                         </div>
                         <div class="contact-item-content">
-                            <h4>Working Hours</h4>
-                            <p>Monday - Friday: 9:00 - 17:00</p>
+                            <h4>工作时间</h4>
+                            <p>周一至周五：9:00 - 17:00</p>
                         </div>
                     </div>
                 </div>
@@ -825,25 +824,25 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <img src="/images/bae7adafccb3e907c9ff922ebd424a91.jpg" alt="R3C Logo" class="logo-footer">
-                    <p>Your trusted guardian for overseas property management. We transform the complexity of international property ownership into a seamless experience.</p>
+                    <p>您值得信赖的海外房产管理守护者。我们将国际房产所有权的复杂性转化为无缝的体验。</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <a href="#home">Home</a>
-                    <a href="#about">About Us</a>
-                    <a href="#services">Services</a>
-                    <a href="#contact">Contact</a>
+                    <h4>快速链接</h4>
+                    <a href="#home">首页</a>
+                    <a href="#about">关于我们</a>
+                    <a href="#services">服务项目</a>
+                    <a href="#contact">联系我们</a>
                 </div>
                 <div class="footer-links">
-                    <h4>Services</h4>
-                    <a href="#services">Property Management</a>
-                    <a href="#services">Rental Service</a>
-                    <a href="#services">Owner Services</a>
-                    <a href="#services">Value Enhancement</a>
+                    <h4>服务项目</h4>
+                    <a href="#services">物业管理</a>
+                    <a href="#services">租赁服务</a>
+                    <a href="#services">业主服务</a>
+                    <a href="#services">价值提升</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 R3C Real Estate Management & Rental. All rights reserved.</p>
+                <p>&copy; 2025 R3C 海外房产管理与租赁 版权所有</p>
             </div>
         </div>
     </footer>
@@ -885,6 +884,7 @@
             nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
         }
 
+        // Language switching function
         function switchLang(lang) {
             // Set cookie for 365 days
             const expires = new Date();
